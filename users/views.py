@@ -9,6 +9,10 @@ from .models import Profile
 
 
 class RegisterView(generics.CreateAPIView):
+    # user = User.objects.get(pk=34)
+    # posts = user.posts.all()
+    # print(posts)
+
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
 
