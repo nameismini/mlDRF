@@ -6,7 +6,7 @@ from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
-    profile = ProfileSerializer(read_only=True)  # nested serializer
+    # profile = ProfileSerializer(read_only=True)  # nested serializer
 
     class Meta:
         model = Post
