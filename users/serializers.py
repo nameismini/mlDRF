@@ -27,6 +27,7 @@ class LoginSerializer(serializers.Serializer):
 
 # 회원가입 시리얼라이즈
 class RegisterSerializer(serializers.ModelSerializer):
+    print('user Create.................................................')
     # 이메일 중복검증
     email = serializers.EmailField(
         required=True,
