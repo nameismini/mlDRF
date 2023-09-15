@@ -163,7 +163,6 @@ class LogViewSet(viewsets.ViewSet):
 
 class LogModelViewSet(viewsets.ModelViewSet):
     queryset = LogInfo.objects.all()
-
     # serializer_class = LogListSerializer
 
     def get_serializer_class(self):

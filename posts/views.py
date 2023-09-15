@@ -11,7 +11,8 @@ from .serializers import PostSerializer, PostCreateSerializer
 import logging
 
 # logger = logging.getLogger(__name__)
-logger = logging.getLogger('my')
+# logger = logging.getLogger('my')
+logger = logging.getLogger('__name__')
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()

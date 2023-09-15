@@ -127,8 +127,7 @@ USE_I18N = True
 
 USE_TZ = False
 
-# APPEND_SLASH = True
-
+APPEND_SLASH = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -136,6 +135,7 @@ USE_TZ = False
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+SERVER = 'django.server'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -154,7 +154,7 @@ LOGGING = {
         },
     },
     'formatters': {
-        'django.server': {
+        SERVER: {
             '()': 'django.utils.log.ServerFormatter',
             'format': '[{server_time}] {message}',
             'style': '{',
@@ -165,14 +165,14 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'filters': ['require_debug_true'],
             'class': 'logging.StreamHandler',
         },
-        'django.server': {
+        SERVER: {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
-            'formatter': 'django.server',
+            'formatter': SERVER,
         },
         'mail_admins': {
             'level': 'ERROR',
@@ -184,10 +184,11 @@ LOGGING = {
             'encoding': 'utf-8',
             'filters': ['require_debug_false'],
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': BASE_DIR / 'logs/mysite.log',
+            'filename': BASE_DIR / 'logs/restLog.log',
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
             'backupCount': 5,
             'formatter': 'standard',
+            # 'when': 'midnight',  # 매 자정마다
         },
     },
     'loggers': {
@@ -195,14 +196,14 @@ LOGGING = {
             'handlers': ['console', 'mail_admins', 'file'],
             'level': 'INFO',
         },
-        'django.server': {
-            'handlers': ['django.server'],
+        SERVER: {
+            'handlers': [SERVER],
             'level': 'INFO',
             'propagate': False,
         },
         'my': {
             'handlers': ['console', 'file'],
-            'level': 'INFO',
+            'level': 'DEBUG',
         },
     }
 }
